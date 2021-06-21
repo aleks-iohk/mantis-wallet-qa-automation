@@ -1,6 +1,8 @@
 //My Transaction Page
 const expect = require('chai').expect;
 const BasePage = require('../pages/BasePage.js')
+const helpers = require('../support/helpers')
+const TD = require('../test_data/testData.json')
 
 class MyTransactionPage extends BasePage.constructor {
 
@@ -30,7 +32,7 @@ class MyTransactionPage extends BasePage.constructor {
 
     //Selectors for all rows of My Transaction table
     get txnTypesRows() {
-        return ('//div[@class="cell" and (text()="Received" or text()="Sent")]')
+        return ('//div[@class="TransactionRow"]//div[@class="cell"][1]')
     }
 
     get txnAssetsRows() {
@@ -121,9 +123,36 @@ class MyTransactionPage extends BasePage.constructor {
         return ('//div[@class="main-title" and text()=\'My transactions\']')
     }
 
+    get lastTransaction(){
+        return ('//*[@id="main"]/div/div/div[3]/div/div/div[2]/div[6]/div[1]/div[1]')
+    }
+
     async IsMyTransactionsDisplayed() {
         expect(await this.isVisible(this.myTransactionsText))
             .to.equal(true);
+    }
+
+    async IsTransactionsShown() {
+            await this.getText(this.lastTransaction)
+            const type = await this.getText(this.txnTypesRows)
+            const amount = await this.getText(this.txnAmountsRows)
+            const time = await this.getText(this.txnTimesRows)
+            for (let i = 0; i < 5; i++) {
+                expect(amount[i]).to.equal(TD.TransactionAmount[i])
+                expect(time[i]).to.equal(TD.TransactionTime[i])
+                expect(type[i]).to.equal(TD.TransactionType[i])
+            }   
+    }
+
+    async checkSentIfTransactionIsDisplayed() {
+        helpers.timeout(15000)
+        const amountOfTransaction = await this.getText(this.txnAmountsRows)
+        expect(amountOfTransaction[0]).to.equal('-0.00100000')
+    }
+
+    async checkIfReceivedTransactionIsDisplayed() {
+        const amountOfTransaction = await this.getText(this.txnAmountsRows)
+        expect(amountOfTransaction[0]).to.equal('+0.001')
     }
 
 }

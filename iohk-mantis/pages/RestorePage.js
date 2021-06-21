@@ -81,6 +81,22 @@ class RestorePage extends BasePage.constructor {
         await this.click(this.nextButton);
     }
 
+    async enterBackupRestoreDetails() {
+        await this.typeText(this.walletNameField, TD.BackupWallet.WalletName);
+        await this.typeText(this.privateKeyField, TD.BackupWallet.PVTKey);
+        await this.typeText(this.enterPasswordField, TD.BackupWallet.Password);
+        await this.typeText(this.repeatPasswordField, TD.BackupWallet.Password);
+        await this.click(this.nextButton);
+    }
+
+    async enterWalletRestoreDetails() {
+        await this.typeText(this.walletNameField, TD.TransactionWallet.WalletName);
+        await this.typeText(this.privateKeyField, TD.TransactionWallet.PVTKey);
+        await this.typeText(this.enterPasswordField, TD.TransactionWallet.Password);
+        await this.typeText(this.repeatPasswordField, TD.TransactionWallet.Password);
+        await this.click(this.nextButton);
+    }
+
     async enterRestorePhrasesDetails() {
         await this.typeText(this.walletNameField, TD.RestoreWallet.WalletName);
         await this.click(this.recoveryPhraseButton);

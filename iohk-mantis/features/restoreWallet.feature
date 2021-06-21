@@ -198,3 +198,26 @@ Feature: Create Mantis Wallet
     Examples:
       | network        |
       | Mordor         |
+
+ @RestoreWallet09
+  @Smoke
+  Scenario Outline: Restore Mantis wallet and check transactions
+    Given I restore specific Mantis Wallet on "<network>"
+    And I check my transactions
+    And I log out
+    And I close Mantis Wallet
+
+    @Sagano
+    Examples:
+      | network        |
+      | Sagano Testnet |
+
+    @Mainnet
+    Examples:
+      | network        |
+      | Mainnet        |
+
+    @Mordor
+    Examples:
+      | network        |
+      | Mordor         |
