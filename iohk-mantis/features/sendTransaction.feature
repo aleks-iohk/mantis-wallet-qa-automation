@@ -210,3 +210,62 @@ Feature: Send transaction on Mantis wallet
 #    Examples:
 #      | network        | address                                    | amount | pass         | fee     |
 #      |Mordor          |                                            |        |              |         |
+
+ @SendTransaction08
+  Scenario Outline: I send ETC to another wallet Advanced options
+    Given I restore Mantis Wallet on "<network>"
+    When I click send button on main page
+    Then I click advanced button
+    Then I enter receiving address "<address>"
+    And I enter amount to send "<amount>"
+    And I click send
+    And I enter password "<pass>"
+    And I confirm transaction
+    Then I log out
+    And I close Mantis Wallet
+
+    @Sagano
+    Examples:
+      | network        | address                                    | amount | pass         |
+      | Sagano Testnet | 0xec49c61786376007494af082b02fac4adb4e4292 | 0.001  | TestPass123! |
+
+#    @Mainnet
+#    Examples:
+#      | network        | address                                    | amount | pass         |
+#      |Mainnet         |                                            |        |              |
+
+#    @Mordor
+#    Examples:
+#      | network        | address                                    | amount | pass         |
+#      |Mordor          |                                            |        |              |
+
+@SendTransaction09
+  Scenario Outline: I send ETC to another wallet and check if transaction is received
+    Given I restore Mantis Wallet on "<network>"
+    When I click send button on main page
+    Then I enter receiving address "<address>"
+    And I enter amount to send "<amount>"
+    And I click send
+    And I enter password "<pass>"
+    And I confirm transaction
+    And I check if sent transaction is displayed in My transactions
+    Then I log out
+    And I close Mantis Wallet
+    And I restore backup Mantis Wallet on "<network>"
+    And I check if received transaction is displayed in My transactions
+    And I close Mantis Wallet
+
+    @Sagano
+    Examples:
+      | network        | address                                    | amount | pass         |
+      | Sagano Testnet | 0xec49c61786376007494af082b02fac4adb4e4292 | 0.001  | TestPass123! |
+
+#    @Mainnet
+#    Examples:
+#      | network        | address                                    | amount | pass         |
+#      |Mainnet         |                                            |        |              |
+
+#    @Mordor
+#    Examples:
+#      | network        | address                                    | amount | pass         |
+#      |Mordor          |                                            |        |              |

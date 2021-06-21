@@ -40,6 +40,24 @@ Given(/^I restore Mantis Wallet on "([^"]*)"$/, async (network) => {
     await homePage.clickRestoreWalletButton();
     await restorePage.enterRestoreDetails();
 });
+Given(/^I restore backup Mantis Wallet on "([^"]*)"$/, async (network) => {
+    await helpers.resetMantisConfig(APP_CONF.TEST_CONF_PATH, APP_CONF.APP_CONF_PATH);
+    await helpers.timeout(5000);
+    await basePage.start()
+    await startPage.login(network);
+    await homePage.acceptTermsAndConditions();
+    await homePage.clickRestoreWalletButton();
+    await restorePage.enterBackupRestoreDetails();
+});
+Given(/^I restore specific Mantis Wallet on "([^"]*)"$/, async (network) => {
+    await helpers.resetMantisConfig(APP_CONF.TEST_CONF_PATH, APP_CONF.APP_CONF_PATH);
+    await helpers.timeout(5000);
+    await basePage.start()
+    await startPage.login(network);
+    await homePage.acceptTermsAndConditions();
+    await homePage.clickRestoreWalletButton();
+    await restorePage.enterWalletRestoreDetails();
+});
 Then(/^I close Mantis Wallet$/, async () => {
     await basePage.stop()
     await helpers.resetMantisConfig(APP_CONF.TEST_CONF_PATH, APP_CONF.APP_CONF_PATH);

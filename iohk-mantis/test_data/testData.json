@@ -45,7 +45,13 @@
   "WalletName": "MantisWalletBackup",
   "Address": "0xec49c61786376007494af082b02fac4adb4e4292"
 },
-  "PVKBlurred": {
+  "TransactionWallet": {
+  "Password": "TestPass123!",
+  "PVTKey": "0x9d3f0463f74a7c29e556952afb67a1566d70e3e5896e5e04055e2aaf5d16353d",
+  "WalletName": "MantisWalletTransaction",
+  "Address": "0x8b6b9fd2a8446fc1fe979426323bd273b94de827"
+}, 
+ "PVKBlurred": {
     "True":"DialogQRCode blurred",
     "False": "DialogQRCode"
   },
@@ -66,6 +72,27 @@
   "TOS": {
     "TOSTitle": "IOHK Terms of Service Agreement"
   },
+  "TransactionType": [
+    "Sent",
+    "Received",
+    "Sent",
+    "Received",
+    "Sent"
+  ],
+  "TransactionAmount": [
+    "-1.100140",
+    "+1.00",
+    "-1.150000",
+    "+1.35",
+    "-0.750000"
+  ],
+  "TransactionTime": [
+    "06/16/2021, 10:34 AM",
+    "06/16/2021, 10:33 AM",
+    "06/16/2021, 10:32 AM",
+    "06/16/2021, 10:26 AM",
+    "06/16/2021, 10:13 AM"
+  ],
   "DateFormat": [
     "MM/DD/YYYY",
     "YYYY-MM-DD",

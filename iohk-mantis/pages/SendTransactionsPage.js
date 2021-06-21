@@ -1,5 +1,6 @@
 //Send Transaction Page
 const expect = require('chai').expect;
+const helpers = require('../support/helpers.js');
 const TD = require('../test_data/testData.json');
 const BasePage = require('../pages/BasePage.js')
 
@@ -177,6 +178,10 @@ class SendTransactionPage extends BasePage.constructor {
         await this.click(this.sendButton);
     }
 
+    async clickAdvancedButton() {
+        await this.click(this.advancedButton);
+    }
+
     async sendTransaction() {
         await this.click(this.sendTransactionButton);
     }
@@ -194,6 +199,7 @@ class SendTransactionPage extends BasePage.constructor {
     }
 
     async confirmTransaction() {
+        await helpers.timeout(1000)
         await this.click(this.confirmButton);
     }
 

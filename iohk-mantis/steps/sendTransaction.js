@@ -7,6 +7,9 @@ When(/^I click send button on main page$/, async () => {
 Then(/^I click send$/, async () => {
     await sendPage.sendTransaction();
 });
+Then(/^I click advanced button$/, async () => {
+    await sendPage.clickAdvancedButton();
+});
 Then(/^I enter receiving address "([^"]*)"$/, async (address)=> {
     await sendPage.enterReceivingAddress(address);
 });

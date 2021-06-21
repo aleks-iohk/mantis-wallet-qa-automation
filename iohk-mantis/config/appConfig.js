@@ -1,6 +1,6 @@
 const APP_CONF = {
     LINUX:{
-        APP_PATH: "/home/ubuntu/IOHK/Mantis-Wallet-0.1.1.AppImage",
+        APP_PATH: "/home/ubuntu/IOHK/Mantis-Wallet-0.2.1.AppImage",
         APP_CONF_PATH: "/home/ubuntu/.mantis-wallet/config.json",
         TEST_CONF_PATH:"./test_data/config.json",
     },
@@ -14,7 +14,7 @@ const APP_CONF = {
         APP_CONF_PATH: "/Users/Mac/.mantis-wallet/config.json",
         TEST_CONF_PATH:"./test_data/config.json",
     },
-    START_TIMEOUT:30000,
-    WAIT:30000
+    START_TIMEOUT:60000,
+    WAIT:60000
 };
 module.exports = APP_CONF
